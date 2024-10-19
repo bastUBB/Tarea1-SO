@@ -12,17 +12,17 @@ Este programa simula una carrera de autos utilizando hilos en C++. Los autos ava
 
 Para compilar el programa, se proporcionan dos opciones: con o sin visualización gráfica de la carrera.
 
-## Compilación sin visualización
-Este comando compila el programa sin incluir gráficos de la carrera.
-```bash
+### Compilación sin visualización
+Este comando compila el programa sin incluir gráficos de la carrera:
+
 g++ carrera.cpp -lpthread -o carrera
 
-## Compilación con visualización
-```bash
+### Compilación con visualización
+Este comando compila el programa con una representación gráfica de la carrera:
+
 g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 
-## Ejemplo de ejecución
-```bash
+### Ejemplo de ejecución
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 
 
