@@ -1,6 +1,6 @@
 # Tarea 1 - Sistemas Operativos
 
-### Integrantes
+## Integrantes
 - Bastian Rodriguez
 - Nicolas Gomez
 
@@ -12,16 +12,16 @@ Este programa simula una carrera de autos utilizando hilos en C++. Los autos ava
 
 Para compilar el programa, se proporcionan dos opciones: con o sin visualización gráfica de la carrera.
 
-### Compilación sin visualización
+## Compilación sin visualización
 Este comando compila el programa sin incluir gráficos de la carrera.
 ```bash
 g++ carrera.cpp -lpthread -o carrera
 
-### Compilación con visualización
+## Compilación con visualización
 ```bash
 g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 
-### Ejemplo de ejecución
+## Ejemplo de ejecución
 ```bash
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 
