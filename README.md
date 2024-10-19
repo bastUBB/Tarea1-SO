@@ -1,8 +1,8 @@
 # Tarea 1 - Sistemas Operativos
 
 ## Integrantes
-- Bastian Rodriguez
-- Nicolas Gomez
+- Nicolás Gómez Morgado
+- Bastián Rodríguez Campusano
 
 ## Descripción
 
