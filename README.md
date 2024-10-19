@@ -27,6 +27,4 @@ g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ### Ejemplo de ejecución
 ```bash
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
-
-
-
+```
