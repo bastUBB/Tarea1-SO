@@ -1,6 +1,7 @@
 # Tarea 1 - Sistemas Operativos
+
 <div style="float: right;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="50">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="10">
 </div>
 
 ## Integrantes
@@ -32,14 +33,14 @@ g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 ```
 
-### Compilación archivo Makefile sin visualización gráfica
+### Creación archivo ejecutable Makefile sin visualización gráfica
 ```bash
 make
 ```
 
-### Compilación archivo Makefile con visualización gráfica
+### Creación archivos ejecutables con visualización gráfica y sin visualización gráfica
 ```bash
-make visual
+make all
 ```
 
 ### Limpiar archivos generados Makefile
