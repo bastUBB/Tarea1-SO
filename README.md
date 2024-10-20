@@ -19,7 +19,7 @@ g++ carrera.cpp -lpthread -o carrera
 ```
 
 ### Compilación con visualización
-Este comando compila el programa con una representación gráfica de la carrera. Se ruega considerar un espacio prudente respecto al tamaño de la terminal para efectos de calidad visual:
+Este comando compila el programa con una representación gráfica de la carrera. Se ruega considerar un espacio prudente respecto al tamaño de la terminal para efectos de mejora en la calidad visual:
 ```bash
 g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ```
