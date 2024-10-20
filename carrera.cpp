@@ -127,15 +127,19 @@ void avance(int meta, int nroauto) {
             
             #ifdef VISUALIZACION
             autoActual.avanzar(avance); // Avanza el vehículo
+            #else
+            metros += avance; // Avanza el auto
+            cout << "Auto " << nroauto + 1 << " avanza: " << avance << " metros, lleva " << metros << " metros en total.\n";
             #endif
             
-            metros += avance; // Avanza el auto
-
+            #ifdef VISUALIZACION
+            metros += avance;
             // Mover el cursor a la línea del auto actual
             std::cout << "\033[" << (nroauto*6+4) << ";2H"; // Mueve el cursor a la línea específica del auto
             // Imprimir el estado del auto
             std::cout << "\nAuto " << nroauto +1 << " avanza: " << avance << " metros, lleva " << metros << " metros en total.\n";
             std::cout << "\033[K"; // Limpia toda la línea actual
+            #endif
 
             // Si el auto ha llegado a la meta y aún no ha terminado
             if (metros >= meta && !carreraTerminada) {
@@ -198,7 +202,10 @@ int main(int argc, char *argv[]) {
         threads[i].join();
     }
 
+    #ifdef VISUALIZACION
     std::cout << "\033[" << cantAutos*6+1<< ";1H"; 
+    #endif
+    
     cout << "\nTabla de posiciones:\n";
     cout << left << setw(15) << "Posición" << setw(15) << "Auto" << endl;
     cout << string(20, '-') << endl; // Línea de separación
