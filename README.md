@@ -24,19 +24,24 @@ Este comando compila el programa con una representación gráfica de la carrera:
 g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ```
 
-### Ejemplo de ejecución
+### Ejemplo de ejecución normal
 ```bash
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 ```
 
-### Compilación archivo Makefile sin visualización gráfica
+### Ejemplo de ejecución visualización gráfica
+```bash
+./carrera_con_dibujo <metros_de_la_carrera> <cantidad_de_competidores>
+```
+
+### Creación archivo ejecutable Makefile sin visualización gráfica
 ```bash
 make
 ```
 
-### Compilación archivo Makefile con visualización gráfica
+### Creación archivos ejecutables con visualización gráfica y sin visualización gráfica
 ```bash
-make visual
+make all
 ```
 
 ### Limpiar archivos generados Makefile
