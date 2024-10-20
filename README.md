@@ -29,11 +29,6 @@ g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 ```
 
-### Ejemplo de ejecución visualización gráfica
-```bash
-./carrera_con_dibujo <metros_de_la_carrera> <cantidad_de_competidores>
-```
-
 ### Creación archivo ejecutable Makefile sin visualización gráfica
 ```bash
 make
@@ -42,6 +37,13 @@ make
 ### Creación archivos ejecutables con visualización gráfica y sin visualización gráfica
 ```bash
 make all
+```
+
+Si desea visualizar el modo dibujo, maximize su terminal para evitar sobreescritura de lineas.
+
+### Ejemplo de ejecución visualización gráfica
+```bash
+./carrera_con_dibujo <metros_de_la_carrera> <cantidad_de_competidores>
 ```
 
 ### Limpiar archivos generados Makefile
