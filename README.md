@@ -1,8 +1,8 @@
 # Tarea 1 - Sistemas Operativos
 
-<div style="float: right;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="10">
-</div>
+|                       |                       |
+|----------------------- |-----------------------|
+| **Tarea 1 - Sistemas Operativos** | <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="50"> |
 
 ## Integrantes
 - Nicolás Gómez Morgado
