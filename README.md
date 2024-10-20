@@ -1,8 +1,7 @@
 # Tarea 1 - Sistemas Operativos
 
-|                       |                       |
 |----------------------- |-----------------------|
-| **Tarea 1 - Sistemas Operativos** | <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="50"> |
+| **Simulador carrera de autos** | <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="50"> |
 
 ## Integrantes
 - Nicolás Gómez Morgado
