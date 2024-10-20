@@ -28,3 +28,18 @@ g++ -DVISUALIZACION carrera.cpp -lpthread -o carrera
 ```bash
 ./carrera <metros_de_la_carrera> <cantidad_de_competidores>
 ```
+
+### Compilación archivo Makefile sin visualización gráfica
+```bash
+make
+```
+
+### Compilación archivo Makefile con visualización gráfica
+```bash
+make visual
+```
+
+### Limpiar archivos generados Makefile
+```bash
+make clean
+```
