@@ -1,32 +1,21 @@
-# Nombre del ejecutable
-TARGET = carrera
-TARGET_VISUAL = carrera_visual  # Nombre para la versión con visualización
-
-# Compilador
+# Compilador y flags
 CXX = g++
-
-# Opciones de compilación
 CXXFLAGS = -lpthread
+TARGET_NO_VIS = carrera
+TARGET_VIS = carrera_con_dibujo
+SRC = carrera.cpp
 
-# Fuentes
-SRCS = carrera.cpp
+# Regla para construir el programa sin visualización
+$(TARGET_NO_VIS): $(SRC)
+	$(CXX) $(SRC) $(CXXFLAGS) -o $(TARGET_NO_VIS)
 
-# Ejecutable sin visualización y con visualización
-all: $(TARGET_VISUAL) $(TARGET) 
+# Regla para construir el programa con visualización
+$(TARGET_VIS): $(SRC)
+	$(CXX) -DVISUALIZACION $(SRC) $(CXXFLAGS) -o $(TARGET_VIS)
 
-# Ejecutable con visualización
-visual: CXXFLAGS += -DVISUALIZACION
-visual: $(TARGET_VISUAL)
+# Regla por defecto
+all: $(TARGET_NO_VIS) $(TARGET_VIS)
 
-# Regla para compilar el ejecutable sin visualización
-$(TARGET): $(SRCS)
-	$(CXX) $(SRCS) $(CXXFLAGS) -o $(TARGET)
-
-# Regla para compilar el ejecutable con visualización
-$(TARGET_VISUAL): $(SRCS)
-	$(CXX) $(SRCS) $(CXXFLAGS) -o $(TARGET_VISUAL)
-
-# Limpieza de archivos
+# Limpiar los archivos generados
 clean:
-	rm -f $(TARGET_VISUAL) $(TARGET) 
-
+	rm -f $(TARGET_NO_VIS) $(TARGET_VIS)
