@@ -10,7 +10,7 @@ Este programa simula una carrera de autos utilizando hilos en C++. Los autos ava
 
 ## Construcción del Programa
 
-Para compilar el programa, se proporcionan las opciones con y sin visualización gráfica de la carrera.
+Para compilar el programa, se proporcionan las siguientes opciones:
 
 ### Compilación sin visualización
 Este comando compila el programa sin incluir gráficos de la carrera:
