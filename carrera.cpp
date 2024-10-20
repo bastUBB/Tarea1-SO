@@ -39,7 +39,8 @@ using namespace std;
 mutex mtx; 
 vector<int> posiciones;
 int autosTerminados = 0; 
-bool carreraTerminada = false; 
+bool carreraTerminada = false;
+int aux=0;
 
 #ifdef VISUALIZACION
 
@@ -80,19 +81,22 @@ public:
     }
 
     // Método para dibujar el vehículo en su posición actual
-    void dibujar() const {
-    // Calcular cuántos símbolos '=' mostrar (hasta un máximo de 135)
-    int avanze = static_cast<int>(static_cast<double>(metros) / meta * 135); // Proporción de avance
-    avanze = std::min(avanze, 135); // Limitar a un máximo de 135
+    void dibujar(int posicion) const {
+        std::cout << "\033[" << (posicion * 6+1) << ";1H"; // Mueve el cursor a la línea 'posicion'
+        std::cout << "\033[K"; // Limpia la línea
 
-    // Aplicar el color correspondiente
-    std::cout << getColor(); // Cambia el color
+        // Calcular cuántos símbolos '=' mostrar (hasta un máximo de 135)
+        int avanze = static_cast<int>(static_cast<double>(metros) / meta * 135); // Proporción de avance
+        avanze = std::min(avanze, 135); // Limitar a un máximo de 135
 
-    std::cout << "Auto " << nroauto + 1 << ": \n";
-    std::cout << std::string(avanze, '=') << "   __     " << "\n";
-    std::cout << std::string(avanze, '=') << ".-'-"<< nroauto + 1<<"`-._ " << "\n";
-    std::cout << std::string(avanze, '=') << "'-O---O--'";
-    std::cout << "\033[0m\n"; // Resetea el color a default
+        // Aplicar el color correspondiente
+        std::cout << getColor(); // Cambia el color
+
+        std::cout << "Auto " << nroauto + 1 << ": \n";
+        std::cout << std::string(avanze, '=') << "   __     " << "\n";
+        std::cout << std::string(avanze, '=') << ".-'-"<< nroauto + 1<<"`-._ " << "\n";
+        std::cout << std::string(avanze, '=') << "'-O---O--'";
+        std::cout << "\033[0m"; // Resetea el color a default
     }
 
 };
@@ -103,9 +107,11 @@ void avance(int meta, int nroauto) {
     
     const std::string COLOR_ROJO_FUERTE = "\033[1;31m"; // Rojo brillante
     const std::string RESET_COLOR = "\033[0m"; // Restablecer color
+    
     #ifdef VISUALIZACION
     Vehiculo autoActual(nroauto, meta); // Crear vehículo
     #endif 
+
     int metros = 0; // Inicializa los metros recorridos por el auto
     int reductorVelocidad = rand() % 10;
     /*if (reductorVelocidad == 1) {
@@ -115,8 +121,7 @@ void avance(int meta, int nroauto) {
 
     while (true) {
         int avance = rand() % 10; // Genera una distancia aleatoria entre 0 y 9
-        
-        // Sección crítica protegida por mutex
+        // Sección crítica protegida por mutex 
         {
             mtx.lock(); // Bloquea el mutex
             
@@ -125,13 +130,18 @@ void avance(int meta, int nroauto) {
             #endif
             
             metros += avance; // Avanza el auto
-            cout << "Auto " << nroauto + 1 << " avanza: " << avance << " metros, lleva " << metros << " metros en total.\n";
-            
+
+            // Mover el cursor a la línea del auto actual
+            std::cout << "\033[" << (nroauto*6+4) << ";2H"; // Mueve el cursor a la línea específica del auto
+            // Imprimir el estado del auto
+            std::cout << "\nAuto " << nroauto +1 << " avanza: " << avance << " metros, lleva " << metros << " metros en total.\n";
+            std::cout << "\033[K"; // Limpia toda la línea actual
+
             // Si el auto ha llegado a la meta y aún no ha terminado
             if (metros >= meta && !carreraTerminada) {
                 posiciones[autosTerminados] = nroauto + 1; // Guarda el auto en la posición correspondiente
                 autosTerminados++; // Aumenta el contador de autos terminados
-                std::cout << COLOR_ROJO_FUERTE << "Auto " << nroauto + 1 << " ha finalizado la carrera en " << autosTerminados << "° lugar\n" << RESET_COLOR;
+                std::cout << COLOR_ROJO_FUERTE << "Autos " << nroauto + 1 << " ha finalizado la carrera en " << autosTerminados << "° lugar\n" << RESET_COLOR;
 
                 // Si todos los autos han terminado, termina la carrera
                 if (autosTerminados == posiciones.size()) {
@@ -140,10 +150,9 @@ void avance(int meta, int nroauto) {
                 mtx.unlock(); // Desbloquea el mutex antes de salir
                 break; // Sale del bucle
             }
-            
-              #ifdef VISUALIZACION
-              autoActual.dibujar();
-              #endif
+             #ifdef VISUALIZACION
+             autoActual.dibujar(nroauto);
+             #endif
             mtx.unlock(); // Desbloquea el mutex
         }
         int tiempoEspera;
@@ -178,6 +187,7 @@ int main(int argc, char *argv[]) {
 
     thread threads[cantAutos]; // Crear hilos para cada auto
 
+    std::cout << "\033[2J"; // Limpia la línea
     // Crear y lanzar las hebras
     for (int i = 0; i < cantAutos; i++) {
         threads[i] = thread(avance, meta, i);
@@ -188,6 +198,7 @@ int main(int argc, char *argv[]) {
         threads[i].join();
     }
 
+    std::cout << "\033[" << cantAutos*6+1<< ";1H"; 
     cout << "\nTabla de posiciones:\n";
     cout << left << setw(15) << "Posición" << setw(15) << "Auto" << endl;
     cout << string(20, '-') << endl; // Línea de separación
