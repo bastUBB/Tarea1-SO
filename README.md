@@ -1,5 +1,6 @@
 # Tarea 1 - Sistemas Operativos
 
+|                       |                       |
 |----------------------- |-----------------------|
 | **Simulador carrera de autos** | <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Logo" width="50"> |
 
