@@ -161,10 +161,10 @@ void avance(int meta, int nroauto) {
         }
         int tiempoEspera;
         #ifdef VISUALIZACION
-        tiempoEspera = rand() % 300 + 100; // Tiempo de espera entre 100 ms y 400 ms
+        tiempoEspera = rand() % 400 + 100; // Tiempo de espera entre 100 ms y 500 ms
         std::this_thread::sleep_for(std::chrono::milliseconds(tiempoEspera)); // Pausa para permitir que otros autos se muestren
         #endif
-        tiempoEspera = rand() % 50 + 150; // Tiempo de espera entre 50 ms y 200 ms
+        tiempoEspera = rand() % 400 + 100; // Tiempo de espera entre 100 ms y 500 ms
         std::this_thread::sleep_for(std::chrono::milliseconds(tiempoEspera)); // Pausa para permitir que otros autos se muestren
     }
 }
